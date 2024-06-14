@@ -7,6 +7,7 @@ function App() {
   const [xPos, setXPos] = useState(0);
   const [yPos, setYPos] = useState(0);
   const [openMenu, setOpenMenu] = useState(false);
+  const [guess, setGuess] = useState('')
 
   function getCoords(e) {
     setXPos(e.clientX);
@@ -53,7 +54,7 @@ function App() {
     </div>
     <GuessBox openMenu={openMenu}/> 
     <div className='dropdown-container' style={dropdownBox}>
-      <Dropdown openMenu={openMenu} />
+      <Dropdown yPos={yPos} xPos={xPos} openMenu={openMenu} guess={guess} setGuess={setGuess} />
     </div>
    
 
