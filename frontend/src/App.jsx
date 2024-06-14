@@ -1,30 +1,46 @@
 import { useState } from 'react'
 import ctsImg from './assets/cosmic-thrill-seekers.png'
+import Dropdown from './Dropdown';
+import './index.css'
 
 function App() {
   const [xPos, setXPos] = useState(0);
   const [yPos, setYPos] = useState(0);
+  const [openMenu, setOpenMenu] = useState(false);
 
   function getCoords(e) {
     setXPos(e.clientX);
     setYPos(e.clientY);
+    if (openMenu === true) {
+      setOpenMenu(false)
+    } else {
+      setOpenMenu(true);
+    }
     console.log("clientX: " + e.clientX , "clientY: " + e.clientY);
   }
 
   const boxStyle = {
     position: "absolute",
-    border: '5px solid red',
     height: '50px',
     width: '50px',
     display: 'flex',
-    top: yPos - 25,
-    left: xPos - 25
+    top: yPos -25,
+    left: xPos -25
   }
 
-  function Box() {
+  const dropdownBox = {
+    position: "absolute",
+    // height: '50px',
+    // width: '50px',
+    display: 'flex',
+    top: yPos -25,
+    left: xPos + 40
+  }
+
+  function GuessBox({ openMenu }) {
     return (
       <>
-        <div className='red-box' style={boxStyle}>
+        <div className={`red-box ${openMenu ? "open-guess" : "closed"}`} style={boxStyle}>
         </div>
       </>
     )
@@ -33,9 +49,13 @@ function App() {
   return (
     <>
     <div>
-      <img onMouseDown={Box} onClick={getCoords} src={ctsImg} height={"800px"}></img>
-      <Box /> 
+      <img onMouseDown={GuessBox} onClick={getCoords} src={ctsImg} height={"800px"}></img>
     </div>
+    <GuessBox openMenu={openMenu}/> 
+    <div className='dropdown-container' style={dropdownBox}>
+      <Dropdown openMenu={openMenu} />
+    </div>
+   
 
     
     </>

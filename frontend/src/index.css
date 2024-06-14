@@ -1,0 +1,32 @@
+.dropdown-container {
+    position: absolute;
+    /* height: 150px;
+    width: 50px; */
+}
+
+.dropdown {
+    display: none;
+}
+
+.guessable {
+    border: 3px solid black;
+    height: 75px;
+    width: 75px;
+}
+
+.open-guess {
+    display: flex;
+    flex-direction: column;
+    border: 5px solid red;
+}
+
+.open-dropdown {
+    display: flex;
+    flex-direction: column;
+    border: 5px solid blue;
+}
+
+.closed {
+    display: none;
+    border: none;
+}
