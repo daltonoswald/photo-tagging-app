@@ -8,16 +8,17 @@ function App() {
   const [yPos, setYPos] = useState(0);
   const [openMenu, setOpenMenu] = useState(false);
   const [guess, setGuess] = useState('')
+  const [imageName, setImageName] = useState('cosmic-thrill-seekers')
 
   function getCoords(e) {
-    setXPos(e.clientX);
-    setYPos(e.clientY);
+    setXPos(e.nativeEvent.offsetX);
+    setYPos(e.nativeEvent.offsetY);
     if (openMenu === true) {
       setOpenMenu(false)
     } else {
       setOpenMenu(true);
     }
-    console.log("clientX: " + e.clientX , "clientY: " + e.clientY);
+    console.log("clientX: " + e.nativeEvent.offsetX , "clientY: " + e.nativeEvent.offsetY);
   }
 
   const boxStyle = {
@@ -50,11 +51,11 @@ function App() {
   return (
     <>
     <div>
-      <img onMouseDown={GuessBox} onClick={getCoords} src={ctsImg} height={"800px"}></img>
+      <img onMouseDown={GuessBox} onClick={getCoords} src={ctsImg} height={"800px"} ></img>
     </div>
     <GuessBox openMenu={openMenu}/> 
     <div className='dropdown-container' style={dropdownBox}>
-      <Dropdown yPos={yPos} xPos={xPos} openMenu={openMenu} guess={guess} setGuess={setGuess} />
+      <Dropdown yPos={yPos} xPos={xPos} openMenu={openMenu} guess={guess} setGuess={setGuess} imageName={imageName} />
     </div>
    
 

@@ -3,13 +3,42 @@ import greenHands from './assets/greenhands.png'
 import rocketTattoo from './assets/rockettattoo.png'
 import './index.css'
 
-export default function Dropdown({ openMenu, xPos, yPos, guess, setGuess }) {
+export default function Dropdown({ openMenu, xPos, yPos, guess, setGuess, imageName }) {
 
-    function handleGuess(e) {
-        console.log(e.target.id)
-        setGuess(e.target.id);
-        console.log(xPos);
-        console.log(yPos);
+    // function handleGuess(e) {
+    //     console.log(e.target.id)
+    //     setGuess(e.target.id);
+    //     console.log(xPos);
+    //     console.log(yPos);
+    // }
+
+    async function handleGuess(e) {
+        e.preventDefault();
+        const url = `http://localhost:3000/game`;
+        const target = `target_${e.target.id}`
+        const formData = {
+            imageName,
+            target,
+            xPos,
+            yPos
+        };
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                mode: "cors",
+                body: JSON.stringify(formData),
+            })
+            const data = await response.json();
+            // if (response.ok) {
+
+            // }
+        } catch (error) {
+            console.error("Error requesting:", error);
+        }
+
     }
 
     return (
