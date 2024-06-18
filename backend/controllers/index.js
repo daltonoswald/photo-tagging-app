@@ -9,7 +9,7 @@ exports.game_post = asyncHandler(async (req, res) => {
         return res.status(400).json({ errors: errors.array() });
     }
     const {
-        imageName, target, xPos, yPos
+        imageName, targetChose, xPos, yPos
     } = req.body
 
     const imagePlayed = await Image.findOne({ imageName })
@@ -17,6 +17,30 @@ exports.game_post = asyncHandler(async (req, res) => {
     if (!imagePlayed) {
         res.status(404).json({ error: 'Image not found' });
     } else {
-        console.log(target, xPos, yPos);
+        const target = imagePlayed.targets[targetChose];
+        
+        const targetNumberIndex = targetChose.slice(-1) - 1;
+        console.log(targetChose);
+        console.log(targetNumberIndex);
+
+        const minCoordinateX = target.coordinateX.minCoordinate;
+        const maxCoordinateX = target.coordinateX.maxCoordinate;
+        const minCoordinateY = target.coordinateY.minCoordinate;
+        const maxCoordinateY = target.coordinateY.maxCoordinate;
+        console.log(xPos, yPos);
+        console.log(minCoordinateX, maxCoordinateX, minCoordinateY, maxCoordinateY)
+        if ((xPos >= minCoordinateX && xPos <= maxCoordinateX) && (yPos >= minCoordinateY && yPos <= maxCoordinateY)) {
+            res.status(200).json({ 
+                result: true, 
+                targetNumberIndex,
+
+             });
+            // console.log(imagePlayed.imageName);
+            // console.log('Your guess of ' + xPos + ' is between ' + minCoordinateX + ' and ' + maxCoordinateX);
+            // conosle.log('Correct Guess')
+        } else {
+            res.status(200).json({ result: false, imagePlayed });
+            console.log('Incorrect Guess');
+        }
     }
 })

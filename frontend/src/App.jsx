@@ -8,11 +8,17 @@ function App() {
   const [yPos, setYPos] = useState(0);
   const [openMenu, setOpenMenu] = useState(false);
   const [guess, setGuess] = useState('')
-  const [imageName, setImageName] = useState('cosmic-thrill-seekers')
+  const [imageName, setImageName] = useState('cosmic-thrill-seekers');
+  const [targetsFound, setTargetsFound] = useState([
+    { found: false, coordinateX: null, coordinateY: null }, 
+    { found: false, coordinateX: null, coordinateY: null }, 
+    { found: false, coordinateX: null, coordinateY: null }, 
+  ])
 
   function getCoords(e) {
     setXPos(e.nativeEvent.offsetX);
     setYPos(e.nativeEvent.offsetY);
+    console.log(targetsFound);
     if (openMenu === true) {
       setOpenMenu(false)
     } else {
@@ -55,7 +61,15 @@ function App() {
     </div>
     <GuessBox openMenu={openMenu}/> 
     <div className='dropdown-container' style={dropdownBox}>
-      <Dropdown yPos={yPos} xPos={xPos} openMenu={openMenu} guess={guess} setGuess={setGuess} imageName={imageName} />
+      <Dropdown 
+      yPos={yPos} 
+      xPos={xPos} 
+      openMenu={openMenu} 
+      guess={guess} 
+      setGuess={setGuess} 
+      imageName={imageName} 
+      targetsFound={targetsFound} 
+      setTargetsFound={setTargetsFound} />
     </div>
    
 

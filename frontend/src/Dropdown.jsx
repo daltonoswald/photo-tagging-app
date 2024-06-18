@@ -3,22 +3,15 @@ import greenHands from './assets/greenhands.png'
 import rocketTattoo from './assets/rockettattoo.png'
 import './index.css'
 
-export default function Dropdown({ openMenu, xPos, yPos, guess, setGuess, imageName }) {
-
-    // function handleGuess(e) {
-    //     console.log(e.target.id)
-    //     setGuess(e.target.id);
-    //     console.log(xPos);
-    //     console.log(yPos);
-    // }
+export default function Dropdown({ openMenu, xPos, yPos, guess, setGuess, imageName, targetsFound, setTargetsFound }) {
 
     async function handleGuess(e) {
         e.preventDefault();
         const url = `http://localhost:3000/game`;
-        const target = `target_${e.target.id}`
+        const targetChose = `target_${e.target.id}`
         const formData = {
             imageName,
-            target,
+            targetChose,
             xPos,
             yPos
         };
@@ -32,9 +25,21 @@ export default function Dropdown({ openMenu, xPos, yPos, guess, setGuess, imageN
                 body: JSON.stringify(formData),
             })
             const data = await response.json();
-            // if (response.ok) {
-
-            // }
+            if (response.ok) {
+                console.log(data);
+                if (data.result === true) {
+                    console.log(data.result);
+                    setTargetsFound((prev) => {
+                       const updatedTargets = [...prev];
+                       updatedTargets[data.targetNumberIndex] = {
+                        found: data.result,
+                        coordinateX: xPos,
+                        coordinateY: yPos,
+                       } 
+                       return updatedTargets
+                    });
+                }
+            }
         } catch (error) {
             console.error("Error requesting:", error);
         }
@@ -45,13 +50,13 @@ export default function Dropdown({ openMenu, xPos, yPos, guess, setGuess, imageN
         <>
             <div className={`dropdown ${openMenu ? "open-dropdown" : "closed"}`}>
                 <div className='guessable'>
-                    <img onClick={handleGuess} id='tiger' src={tiger}></img>
+                    <img onClick={handleGuess} id='1' src={tiger}></img>
                 </div>
                 <div className='guessable'>
-                    <img onClick={handleGuess} id='greenhands' src={greenHands}></img>
+                    <img onClick={handleGuess} id='2' src={rocketTattoo}></img>
                 </div>
                 <div className='guessable'>
-                    <img onClick={handleGuess} id='rockettattoo' src={rocketTattoo}></img>
+                    <img onClick={handleGuess} id='3' src={greenHands}></img>
                 </div>
             </div>
         </>
