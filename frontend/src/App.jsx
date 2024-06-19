@@ -56,6 +56,9 @@ function App() {
   
   return (
     <>
+            {targetsFound.every((target) => target.found) && (
+            <div>You Win!</div>
+        )}
     <div>
       <img onMouseDown={GuessBox} onClick={getCoords} src={ctsImg} height={"800px"} ></img>
     </div>
@@ -65,6 +68,7 @@ function App() {
       yPos={yPos} 
       xPos={xPos} 
       openMenu={openMenu} 
+      setOpenMenu={setOpenMenu}
       guess={guess} 
       setGuess={setGuess} 
       imageName={imageName} 

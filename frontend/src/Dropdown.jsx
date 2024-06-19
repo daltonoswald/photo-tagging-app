@@ -1,12 +1,28 @@
-import tiger from './assets/tiger.png'
-import greenHands from './assets/greenhands.png'
-import rocketTattoo from './assets/rockettattoo.png'
+import { useState, useEffect } from 'react'
+import tiger from './assets/target_1.png'
+import greenHands from './assets/target_3.png'
+import rocketTattoo from './assets/target_2.png'
 import './index.css'
 
-export default function Dropdown({ openMenu, xPos, yPos, guess, setGuess, imageName, targetsFound, setTargetsFound }) {
+
+export default function Dropdown({ openMenu, setOpenMenu, xPos, yPos, guess, setGuess, imageName, targetsFound, setTargetsFound }) {
+    const [targetsToFind, setTargetsToFind] = useState([]);
+
+    useEffect(() => {
+        const images = [];
+        for (let i = 1; i < 4; i++) {
+            images.push({
+                src: `/src/assets/target_${i}.png`,
+                id: `${i}`,
+            })
+        }
+        setTargetsToFind(images);
+        console.log(images);
+    }, [imageName])
 
     async function handleGuess(e) {
         e.preventDefault();
+        setOpenMenu(false);
         const url = `http://localhost:3000/game`;
         const targetChose = `target_${e.target.id}`
         const formData = {
@@ -38,6 +54,8 @@ export default function Dropdown({ openMenu, xPos, yPos, guess, setGuess, imageN
                        } 
                        return updatedTargets
                     });
+                    const updatedTargetsToFind = targetsToFind.filter(target => target.id.toString() !== (data.targetNumberIndex + 1).toString());
+                    setTargetsToFind(updatedTargetsToFind);
                 }
             }
         } catch (error) {
@@ -49,7 +67,7 @@ export default function Dropdown({ openMenu, xPos, yPos, guess, setGuess, imageN
     return (
         <>
             <div className={`dropdown ${openMenu ? "open-dropdown" : "closed"}`}>
-                <div className='guessable'>
+                {/* <div className='guessable'>
                     <img onClick={handleGuess} id='1' src={tiger}></img>
                 </div>
                 <div className='guessable'>
@@ -57,7 +75,12 @@ export default function Dropdown({ openMenu, xPos, yPos, guess, setGuess, imageN
                 </div>
                 <div className='guessable'>
                     <img onClick={handleGuess} id='3' src={greenHands}></img>
-                </div>
+                </div> */}
+                {targetsToFind.map((target, index) => 
+                    <div className='guessable'>
+                        <img onClick={handleGuess} id={target.id} src={target.src} />
+                    </div>
+                )}
             </div>
         </>
     )
