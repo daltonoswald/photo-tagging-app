@@ -5,20 +5,20 @@ import rocketTattoo from './assets/target_2.png'
 import './index.css'
 
 
-export default function Dropdown({ openMenu, setOpenMenu, xPos, yPos, guess, setGuess, imageName, targetsFound, setTargetsFound }) {
-    const [targetsToFind, setTargetsToFind] = useState([]);
+export default function Dropdown({ openMenu, setOpenMenu, xPos, yPos, guess, setGuess, imageName, targetsToFind, setTargetsToFind, targetsFound, setTargetsFound }) {
+    // const [targetsToFind, setTargetsToFind] = useState([]);
 
-    useEffect(() => {
-        const images = [];
-        for (let i = 1; i < 4; i++) {
-            images.push({
-                src: `/src/assets/target_${i}.png`,
-                id: `${i}`,
-            })
-        }
-        setTargetsToFind(images);
-        console.log(images);
-    }, [imageName])
+    // useEffect(() => {
+    //     const images = [];
+    //     for (let i = 1; i < 4; i++) {
+    //         images.push({
+    //             src: `/src/assets/target_${i}.png`,
+    //             id: `${i}`,
+    //         })
+    //     }
+    //     setTargetsToFind(images);
+    //     console.log(images);
+    // }, [imageName])
 
     async function handleGuess(e) {
         e.preventDefault();
