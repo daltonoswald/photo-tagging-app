@@ -10,4 +10,6 @@ router.get('/', function(req, res, next) {
 
 router.post('/game', index_controlller.game_post);
 
+router.post('/score', index_controlller.score_post);
+
 module.exports = router;

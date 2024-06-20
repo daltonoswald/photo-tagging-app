@@ -44,3 +44,31 @@ exports.game_post = asyncHandler(async (req, res) => {
         }
     }
 })
+
+exports.score_post = [
+    body('username', 'Username must not be empty').trim().isLength({ min: 1, max: 25 }).escape(),
+
+    asyncHandler(async (req, res) => {
+        const errors = validationResult(req);
+        if (!errors.isEmpty()) {
+            return res.status(400).json({ errors: errors.array() });
+        }
+        try {
+            const {
+                imageName, username, time, timestamp,
+            } = req.body;
+
+            const score = new Score({
+                imageName,
+                username,
+                time,
+                timestamp,
+            });
+
+            await score.save();
+            res.status(200).json();
+        } catch (error) {
+            res.status(500).json({ error });
+        }
+    })
+]
