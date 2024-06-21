@@ -1,7 +1,4 @@
 import { useState, useEffect } from 'react'
-import tiger from './assets/target_1.png'
-import greenHands from './assets/target_3.png'
-import rocketTattoo from './assets/target_2.png'
 import './index.css'
 
 
@@ -23,6 +20,7 @@ export default function Dropdown({ openMenu, setOpenMenu, xPos, yPos, guess, set
     async function handleGuess(e) {
         e.preventDefault();
         setOpenMenu(false);
+        console.log(imageName);
         const url = `http://localhost:3000/game`;
         const targetChose = `target_${e.target.id}`
         const formData = {

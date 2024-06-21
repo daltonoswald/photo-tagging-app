@@ -1,17 +1,19 @@
 import { useEffect, useState } from 'react'
-import ctsImg from './assets/cosmic-thrill-seekers.png'
+// import ctsImg from './assets/cosmic-thrill-seekers.png'
 import Dropdown from './Dropdown';
 import Gameover from './Gameover';
 import Timer from './Timer';
 import './index.css'
+import { useLocation } from 'react-router-dom';
 
-function App() {
+function Gamepage() {
   const [xPos, setXPos] = useState(0);
   const [yPos, setYPos] = useState(0);
   const [openMenu, setOpenMenu] = useState(false);
   const [guess, setGuess] = useState('')
-  const [imageName, setImageName] = useState('cosmic-thrill-seekers');
-
+  const location = useLocation();
+  const [imageName, setImageName] = useState(location.state?.imageName);
+  const imagePicked = location.state?.imagePicked
   const [targetsToFind, setTargetsToFind] = useState([]);
 
   const [targetsFound, setTargetsFound] = useState([
@@ -22,14 +24,6 @@ function App() {
 
   const [time, setTime] = useState(0);
   const [timerOn, setTimerOn] = useState(false);
-
-  // useEffect(() => {
-  //   let intervalId;
-  //   if (timerOn) {
-  //     intervalId = setInterval(() => setTime(time + 1), 10);
-  //   }
-  //   return () => clearInterval(intervalId);
-  // }, [timerOn, time]);
 
   const startStopTimer = () => {
     setTimerOn(!timerOn);
@@ -45,7 +39,7 @@ function App() {
     const images = [];
     for (let i = 1; i < 4; i++) {
         images.push({
-            src: `/src/assets/target_${i}.png`,
+            src: `/src/assets/${imageName}/target_${i}.png`,
             id: `${i}`,
         })
     }
@@ -95,13 +89,10 @@ function App() {
   
   return (
     <>
-    <Timer time={time} setTime={setTime} timerOn={timerOn} />
-            {targetsFound.every((target) => target.found) && (
+        {targetsFound.every((target) => target.found) && (
             <Gameover imageName={imageName} time={time} setTime={setTime} timerOn={timerOn} />
         )}
-    <div>
-      <img onMouseDown={GuessBox} onClick={getCoords} src={ctsImg} height={"800px"} ></img>
-    </div>
+    <Timer time={time} setTime={setTime} timerOn={timerOn} />
     <GuessBox openMenu={openMenu}/> 
     <div className='dropdown-container' style={dropdownBox}>
       <Dropdown 
@@ -117,11 +108,12 @@ function App() {
       targetsFound={targetsFound} 
       setTargetsFound={setTargetsFound} />
     </div>
-   
 
-    
+    <div>
+      <img onMouseDown={GuessBox} onClick={getCoords} src={imagePicked}></img>
+    </div>
     </>
   )
 }
 
-export default App
+export default Gamepage
