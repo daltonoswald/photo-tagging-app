@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 // import ctsImg from './assets/cosmic-thrill-seekers.png'
 import Dropdown from './Dropdown';
 import Gameover from './Gameover';
+import Nav from './Nav';
 import Timer from './Timer';
 import './index.css'
 import { useLocation } from 'react-router-dom';
@@ -15,6 +16,7 @@ function Gamepage() {
   const [imageName, setImageName] = useState(location.state?.imageName);
   const imagePicked = location.state?.imagePicked
   const [targetsToFind, setTargetsToFind] = useState([]);
+  const [targetsList, setTargetsList] = useState([]);
 
   const [targetsFound, setTargetsFound] = useState([
     { found: false, coordinateX: null, coordinateY: null }, 
@@ -44,6 +46,7 @@ function Gamepage() {
         })
     }
     setTargetsToFind(images);
+    setTargetsList(images);
     startStopTimer();
     console.log(images);
 }, [imageName])
@@ -52,12 +55,9 @@ function Gamepage() {
     setXPos(e.nativeEvent.offsetX);
     setYPos(e.nativeEvent.offsetY);
     console.log(targetsFound);
-    if (openMenu === true) {
-      setOpenMenu(false)
-    } else {
-      setOpenMenu(true);
-    }
     console.log("clientX: " + e.nativeEvent.offsetX , "clientY: " + e.nativeEvent.offsetY);
+    setOpenMenu(!openMenu);
+    return;
   }
 
   const boxStyle = {
@@ -71,20 +71,9 @@ function Gamepage() {
 
   const dropdownBox = {
     position: "absolute",
-    // height: '50px',
-    // width: '50px',
     display: 'flex',
     top: yPos -25,
     left: xPos + 40
-  }
-
-  function GuessBox({ openMenu }) {
-    return (
-      <>
-        <div className={`red-box ${openMenu ? "open-guess" : "closed"}`} style={boxStyle}>
-        </div>
-      </>
-    )
   }
   
   return (
@@ -92,25 +81,40 @@ function Gamepage() {
         {targetsFound.every((target) => target.found) && (
             <Gameover imageName={imageName} time={time} setTime={setTime} timerOn={timerOn} />
         )}
-    <Timer time={time} setTime={setTime} timerOn={timerOn} />
-    <GuessBox openMenu={openMenu}/> 
-    <div className='dropdown-container' style={dropdownBox}>
-      <Dropdown 
-      yPos={yPos} 
-      xPos={xPos} 
-      openMenu={openMenu} 
-      setOpenMenu={setOpenMenu}
-      guess={guess} 
-      setGuess={setGuess} 
-      imageName={imageName} 
-      targetsToFind={targetsToFind}
-      setTargetsToFind={setTargetsToFind}
-      targetsFound={targetsFound} 
-      setTargetsFound={setTargetsFound} />
-    </div>
+        <Nav />
+        <div className='gamepage-header'>
+          <Timer time={time} setTime={setTime} timerOn={timerOn} />
+          <div className='header-targets'>
+            {targetsList.map((target, index) => 
+                <div className='guessable'>
+                  <img id={target.id} src={target.src} />
+                </div>
+            )}
+          </div>
+        </div>
+
+    {openMenu === true && (
+      <>
+          <div className='open-guess' style={boxStyle}></div>
+          <div className='dropdown-container' style={dropdownBox}>
+            <Dropdown 
+            yPos={yPos} 
+            xPos={xPos} 
+            openMenu={openMenu} 
+            setOpenMenu={setOpenMenu}
+            guess={guess} 
+            setGuess={setGuess} 
+            imageName={imageName} 
+            targetsToFind={targetsToFind}
+            setTargetsToFind={setTargetsToFind}
+            targetsFound={targetsFound} 
+            setTargetsFound={setTargetsFound} />
+          </div>
+      </>
+    )}
 
     <div>
-      <img onMouseDown={GuessBox} onClick={getCoords} src={imagePicked}></img>
+      <img onClick={getCoords} src={imagePicked}></img>
     </div>
     </>
   )

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Nav from "./Nav";
 import ctsImg from './assets/cosmic-thrill-seekers/cosmic-thrill-seekers.png'
 
 
@@ -6,22 +7,21 @@ export default function Homepage() {
 
     return (
         <>
-            <div className="header">
-                <h1>Photo Tagging Game</h1>
-            </div>
+            <Nav />
             <div className="content">
                 <div className="navigation">
-                    <h3 className="game-picker-title">Choose an image</h3>
                     <Link to='/'>Choose an Image</Link>
                     <Link to="/leaderboard">Leaderboards</Link>
                 </div>
                 <div className="games">
-                    <div className="game-card">
-                        <Link to='/gamepage' state={{ imageName: 'cosmic-thrill-seekers', imagePicked: ctsImg }}>
-                        <h4>Cosmic Thrill Seekers</h4>
-                        <img src={ctsImg} width={'200px'} />
-                        </Link>
-                    </div>
+                    <Link className="game-card" to='/gamepage' state={{ imageName: 'cosmic-thrill-seekers', imagePicked: ctsImg }}>
+                        <h4 className="game-card-title">Cosmic Thrill Seekers</h4>
+                        <img className="game-card-preview" src={ctsImg} />
+                    </Link>
+                    <Link className="game-card" to='/gamepage' state={{ imageName: 'cosmic-thrill-seekers', imagePicked: ctsImg }}>
+                        <h4 className="game-card-title">Cosmic Thrill Seekers</h4>
+                        <img className="game-card-preview" src={ctsImg} />
+                    </Link>
                 </div>
             </div>
         </>

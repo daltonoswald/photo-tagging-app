@@ -16,13 +16,11 @@ export default function Timer({ time, setTime, timerOn }) {
 
       return (
         <div className="timer">
-            <div className="timer-title">
                 <p>
                     {hours}:{minutes.toString().padStart(2, "0")}:
                     {seconds.toString().padStart(2, "0")}:
                     {milliseconds.toString().padStart(2, "0")}
                 </p>
-            </div>
         </div>
       )
 }

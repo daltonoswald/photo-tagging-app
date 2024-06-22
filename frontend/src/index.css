@@ -1,3 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow');
+
+body {
+    font-family: "Barlow";
+    margin: 0;
+    background-color: #779cbb;
+}
+
+a {
+    color: black;
+    text-decoration: underline;
+}
+
+.nav {
+    background-color: #6c698D;
+}
+
+.nav-title {
+    margin: 0;
+    padding: 2vh 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28px;
+    gap: 10vw;
+    margin: 2vh;
+}
+
+.games {
+    width: 50vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0 auto;
+    gap: 2vw;
+}
+
+.game-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 4px solid #6C698D;
+    border-radius: 2rem .1rem;
+    padding: 2vh 4vw;
+    background-color: #D4D2D5;
+    box-shadow: #000 0 2px 8px;
+}
+
+.game-card-title {
+    text-align: center;
+    font-size: 24px;
+    margin: 0;
+}
+
+.game-card-preview {
+    margin-top: 8px;
+    width: 200px;
+}
+
+.gamepage-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    margin: 2vh 0;
+}
+
+.timer {
+    width: 10vw;
+}
+
+.header-targets {
+    display: flex;
+    flex-direction: row;
+}
+
 .dropdown-container {
     position: absolute;
     /* height: 150px;
@@ -32,9 +113,10 @@
 }
 
 .gameover-screen {
-    background-color: rgba(0, 0, 0, 0.116);
-    border: 3px solid black;
+    background-color: rgba(0, 0, 0, 0.5);
+    /* border: 3px solid black; */
     position: fixed;
+    top: 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -45,12 +127,12 @@
 }
 
 .gameover-form {
-    background-color: rebeccapurple;
+    background-color: #D4D2D5;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 3px solid darkgreen;
+    border: 3px solid #779cbb;
     padding: 5vh 10vw;
     border-radius: 4em 0.1em;
 }
