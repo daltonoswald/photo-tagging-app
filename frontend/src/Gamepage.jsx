@@ -5,7 +5,7 @@ import Gameover from './Gameover';
 import Nav from './Nav';
 import Timer from './Timer';
 import './index.css'
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 function Gamepage() {
   const [xPos, setXPos] = useState(0);
@@ -81,15 +81,17 @@ function Gamepage() {
         {targetsFound.every((target) => target.found) && (
             <Gameover imageName={imageName} time={time} setTime={setTime} timerOn={timerOn} />
         )}
-        <Nav />
         <div className='gamepage-header'>
-          <Timer time={time} setTime={setTime} timerOn={timerOn} />
-          <div className='header-targets'>
-            {targetsList.map((target, index) => 
-                <div className='guessable'>
-                  <img id={target.id} src={target.src} />
-                </div>
-            )}
+          <Nav />
+          <div className='gamepage-header-info'>
+            <Timer time={time} setTime={setTime} timerOn={timerOn} />
+            <div className='header-targets'>
+              {targetsList.map((target, index) => 
+                  <div className='guessable'>
+                    <img id={target.id} src={target.src} />
+                  </div>
+              )}
+            </div>
           </div>
         </div>
 
@@ -113,7 +115,7 @@ function Gamepage() {
       </>
     )}
 
-    <div>
+    <div className='image-picked'>
       <img onClick={getCoords} src={imagePicked}></img>
     </div>
     </>

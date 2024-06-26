@@ -64,14 +64,31 @@ a {
 }
 
 .gamepage-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #9494a3;
+    border-bottom: 3px solid black;
+    box-shadow: 0 5px 4px 0 rgba(0,0,0,0.1);
+}
+
+.gamepage-header-info {
     display: flex;
     align-items: center;
     justify-content: space-around;
-    margin: 2vh 0;
+    margin: 1vh 0;
+}
+
+.header-targets > .guessable,
+.header-targets > .guessable > img {
+    height: 75px;
+    width: 75px;
 }
 
 .timer {
     width: 10vw;
+    font-size: 32px;
 }
 
 .header-targets {
@@ -110,6 +127,16 @@ a {
 .closed {
     display: none !important;
     border: none;
+}
+
+.image-picked {
+    /* margin-top: 25vh;
+    margin-left: auto;
+    margin-right: auto; */
+    margin: 25vh auto;
+    margin-bottom: 10vh;
+    display: flex;
+    justify-content: center;
 }
 
 .gameover-screen {
