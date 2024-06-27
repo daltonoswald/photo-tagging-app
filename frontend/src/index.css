@@ -32,11 +32,51 @@ a {
     margin: 2vh;
 }
 
+.leaderboards {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.leaderboard-preview {
+    width: 200px;
+}
+
+.score-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    border: 4px solid #6C698D;
+    border-radius: 2rem .1rem;
+    padding: 2vh 4vw;
+    background-color: #D4D2D5;
+    box-shadow: #000 0 2px 8px;
+}
+
+.score {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    border: 3px solid black;
+    padding: 8px;
+    margin: 8px;
+    width: 100%;
+}
+
+.score-rank {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 0 20px;
+}
+
 .games {
-    width: 50vw;
+    width: 90vw;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     margin: 0 auto;
     gap: 2vw;
 }
@@ -45,11 +85,14 @@ a {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-around;
     border: 4px solid #6C698D;
     border-radius: 2rem .1rem;
     padding: 2vh 4vw;
     background-color: #D4D2D5;
     box-shadow: #000 0 2px 8px;
+    min-width: 300px;
+    min-height: 250px;
 }
 
 .game-card-title {
@@ -130,13 +173,13 @@ a {
 }
 
 .image-picked {
-    /* margin-top: 25vh;
-    margin-left: auto;
-    margin-right: auto; */
     margin: 25vh auto;
     margin-bottom: 10vh;
     display: flex;
-    justify-content: center;
+}
+
+.image-picked > img {
+    margin: auto;
 }
 
 .gameover-screen {

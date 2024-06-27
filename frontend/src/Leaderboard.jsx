@@ -1,9 +1,32 @@
 import { Link } from "react-router-dom";
 import ctsImg from './assets/cosmic-thrill-seekers/cosmic-thrill-seekers.png'
 import Nav from "./Nav";
+import { useState, useEffect } from "react";
 
 
-export default function Homepage() {
+export default function Leaderboard() {
+    const [leaderboardImage, setLeaderboardImage] = useState('cosmic-thrill-seekers');
+    const [leaderboardImagePicked, setLeaderboardImagePicked] = useState('/src/assets/cosmic-thrill-seekers/cosmic-thrill-seekers-preview.png');
+    const [leaderboardScores, setLeaderboardScores] = useState(null);
+    const url = `http://localhost:3000/leaderboard/${leaderboardImage}`;
+
+    useEffect(() => {
+        fetch(url, 
+            {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                mode: 'cors',
+            })
+            .then((res) => res.json())
+            .then((data) => setLeaderboardScores(data))
+    }, [leaderboardImage]);
+
+    function changeLeaderboard(event) {
+        setLeaderboardImage(event.target.value);
+        setLeaderboardImagePicked(`/src/assets/${event.target.value}/${event.target.value}-preview.png`)
+    }
 
     return (
         <>
@@ -14,7 +37,39 @@ export default function Homepage() {
                     <Link to="/leaderboard">Leaderboards</Link>
                 </div>
                 <div className="leaderboards">
-                    <div>Hi</div>
+                    <div className="leaderboard-image">
+                        <img src={leaderboardImagePicked} className="leaderboard-preview"></img>
+                    </div>
+                    <div className="leadboard-scores">
+                        <div className="selector">
+                            <select onChange={changeLeaderboard}>
+                                <option value='cosmic-thrill-seekers'>Cosmic Thrill Seekers</option>
+                                <option value='smash-bros-ultimate'>Smash Bros Ultimate</option>
+                            </select>
+                        </div>
+                        <div className="score-container">
+                            {leaderboardScores &&
+                            leaderboardScores.map((score, index) => {
+
+                                const hours = Math.floor(score.time / 360000);
+                                const minutes = Math.floor((score.time % 360000) / 6000);
+                                const seconds = Math.floor((score.time % 6000) / 100);
+                                const milliseconds = score.time % 100;
+
+
+                                return (
+                                    <div className="score">
+                                        <p className="score-rank">{index + 1}</p>
+                                        <div className="score-info">
+                                            <p className="score-username">{score.username}</p>
+                                            <p className="score-time">{hours}h {minutes}m {seconds}s {milliseconds}ms</p>
+                                            <p className="score-timestamp">{score.timestamp}</p>
+                                        </div>
+                                    </div>
+                                )
+                            })}
+                        </div>
+                    </div>
                 </div>
             </div>
         </>
