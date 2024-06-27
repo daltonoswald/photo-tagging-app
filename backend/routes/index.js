@@ -1,15 +1,17 @@
 var express = require('express');
 var router = express.Router();
 
-const index_controlller = require('../controllers/index')
+const index_controller = require('../controllers/index')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index', { title: 'Express' });
 });
 
-router.post('/game', index_controlller.game_post);
+router.get('/leaderboard/:imageName', index_controller.score_get);
 
-router.post('/score', index_controlller.score_post);
+router.post('/game', index_controller.game_post);
+
+router.post('/score', index_controller.score_post);
 
 module.exports = router;

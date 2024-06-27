@@ -1,5 +1,6 @@
 const { body, validationResult } = require('express-validator');
 const asyncHandler = require('express-async-handler');
+const { format } = require('date-fns')
 const Image = require('../models/image');
 const Score = require('../models/score');
 
@@ -42,6 +43,22 @@ exports.game_post = asyncHandler(async (req, res) => {
             res.status(200).json({ result: false, imagePlayed });
             console.log('Incorrect Guess');
         }
+    }
+})
+
+exports.score_get = asyncHandler(async (req, res) => {
+    const allScores = await Score.find({ imageName: req.params.imageName })
+        .sort({ time: 1 }, { timestamp: -1 });
+
+    const formattedScores = allScores.map((score) => ({
+        ...score.toObject(),
+        timestamp: format(new Date(score.timestamp), 'EEEE dd MMMM yyyy'),
+    }))
+
+    if (!allScores) {
+        res.status(204).json({ error: `Scores are not available` });
+    } else {
+        res.status(200).json(formattedScores)
     }
 })
 
