@@ -36,9 +36,6 @@ exports.game_post = asyncHandler(async (req, res) => {
                 targetNumberIndex,
 
              });
-            // console.log(imagePlayed.imageName);
-            // console.log('Your guess of ' + xPos + ' is between ' + minCoordinateX + ' and ' + maxCoordinateX);
-            // conosle.log('Correct Guess')
         } else {
             res.status(200).json({ result: false, imagePlayed });
             console.log('Incorrect Guess');
@@ -48,7 +45,10 @@ exports.game_post = asyncHandler(async (req, res) => {
 
 exports.score_get = asyncHandler(async (req, res) => {
     const allScores = await Score.find({ imageName: req.params.imageName })
-        .sort({ time: 1 }, { timestamp: -1 });
+        .sort({ time: 1 }, { timestamp: -1 })
+        .collation({ locale: 'en_US', numericOrdering: true })
+        .exec();
+        console.log(allScores);
 
     const formattedScores = allScores.map((score) => ({
         ...score.toObject(),

@@ -5,7 +5,7 @@ const { Schema } = mongoose;
 const ScoresSchema = new Schema({
     imageName: { type: String },
     username: { type: String },
-    time: { type: String },
+    time: { type: Number },
     timestamp: { type: Date },
 })
 

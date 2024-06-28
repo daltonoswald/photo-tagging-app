@@ -47,35 +47,70 @@ const data = [
         targets: {
             target_1: {
                 coordinateX: {
-                    minCoordinate: 217,
-                    maxCoordinate: 267,
+                    minCoordinate: 265,
+                    maxCoordinate: 315,
                 },
                 coordinateY: {
-                    minCoordinate: 294,
-                    maxCoordinate: 344,
+                    minCoordinate: 365,
+                    maxCoordinate: 415,
                 }
             },
             target_2: {
                 coordinateX: {
-                    minCoordinate: 545,
-                    maxCoordinate: 595,
+                    minCoordinate: 675,
+                    maxCoordinate: 725,
                 },
                 coordinateY: {
-                    minCoordinate: 644,
-                    maxCoordinate: 694,
+                    minCoordinate: 803,
+                    maxCoordinate: 853,
                 }
             },
             target_3: {
                 coordinateX: {
-                    minCoordinate: 188,
-                    maxCoordinate: 238,
+                    minCoordinate: 230,
+                    maxCoordinate: 280,
                 },
                 coordinateY: {
-                    minCoordinate: 525,
-                    maxCoordinate: 575,
+                    minCoordinate: 652,
+                    maxCoordinate: 702,
                 }
             }
         }
+    },
+    {
+        imageName: 'smash-bros-ultimate',
+        targets: {
+            target_1: {
+                coordinateX: {
+                    minCoordinate: 2626,
+                    maxCoordinate: 2676,
+                },
+                coordinateY: {
+                    minCoordinate: 509,
+                    maxCoordinate: 559,
+                }
+            },
+            target_2: {
+                coordinateX: {
+                    minCoordinate: 3670,
+                    maxCoordinate: 3720,
+                },
+                coordinateY: {
+                    minCoordinate: 570,
+                    maxCoordinate: 620,
+                }
+            },
+            target_3: {
+                coordinateX: {
+                    minCoordinate: 455,
+                    maxCoordinate: 505,
+                },
+                coordinateY: {
+                    minCoordinate: 258,
+                    maxCoordinate: 308,
+                }
+            }
+        }  
     }
 ]
 
