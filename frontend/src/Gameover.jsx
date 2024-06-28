@@ -4,7 +4,7 @@ import Timer from './Timer';
 import './index.css'
 
 export default function Gameover({ imageName, time, setTime, timerOn }) {
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const handleSubmit = async (event) => {
         event.preventDefault();
@@ -27,8 +27,7 @@ export default function Gameover({ imageName, time, setTime, timerOn }) {
                 mode: 'cors',
             });
             if (response.ok) {
-                // navigate('/');
-                console.log(response);
+                navigate('/leaderboard');
             }
         } catch (error) {
             console.error("Error requesting:", error);
