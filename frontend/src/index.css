@@ -6,9 +6,20 @@ body {
     background-color: #779cbb;
 }
 
+#root {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 a {
     color: black;
     text-decoration: underline;
+}
+
+a:hover {
+    transform: translateY(-2px);
 }
 
 .nav {
@@ -20,7 +31,7 @@ a {
     padding: 2vh 1vw;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 .navigation {
@@ -30,6 +41,11 @@ a {
     font-size: 28px;
     gap: 10vw;
     margin: 2vh;
+}
+
+.content {
+    width: 90%;
+    padding: 0 5%;
 }
 
 .leaderboards {
@@ -43,6 +59,24 @@ a {
     flex-wrap: wrap;
     margin: 0 auto;
     gap: 2vw;
+}
+
+.selector {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.selector > select {
+    background-color:#D4D2D5;
+    height: 32px;
+    width: 20vw;
+    text-align: center;
+    font-size: 16px;
+    font-family: "Barlow";
+    border-radius: 8px;
+    border: 2px solid black;
 }
 
 .leaderboard-preview {
@@ -116,12 +150,17 @@ a {
     width: 200px;
 }
 
-.gamepage-header {
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
-    background-color: #9494a3;
+    width: 90%;
+    height: 100px;
+    padding: 0 5%;
+    background-color: #6c698D;
     border-bottom: 3px solid black;
     box-shadow: 0 5px 4px 0 rgba(0,0,0,0.1);
 }
@@ -182,10 +221,12 @@ a {
     border: none;
 }
 
-.image-picked {
-    margin: 25vh auto;
+.image-picked,
+.content {
+    margin: 15vh auto;
     margin-bottom: 10vh;
     display: flex;
+    flex-direction: column;
 }
 
 .image-picked > img {
@@ -215,4 +256,31 @@ a {
     border: 3px solid #779cbb;
     padding: 5vh 10vw;
     border-radius: 4em 0.1em;
+}
+
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 96%;
+    padding: 0% 2%;
+
+    background-color: #6c698D;
+    border-top: 3px solid black;
+    box-shadow: 0 5px 4px 0 rgba(0,0,0,0.1);
+}
+
+.footer-odin {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 8px;
+}
+
+.icon {
+    height: 50px;
 }

@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import ctsImg from './assets/cosmic-thrill-seekers/cosmic-thrill-seekers.png'
 import Nav from "./Nav";
+import Footer from "./Footer";
 import { useState, useEffect } from "react";
 
 
@@ -32,7 +33,9 @@ export default function Leaderboard() {
 
     return (
         <>
-            <Nav />
+            <div className="header">
+                <Nav />
+            </div>
             <div className="content">
                 <div className="navigation">
                     <Link to='/'>Choose an Image</Link>
@@ -78,6 +81,7 @@ export default function Leaderboard() {
                     </div>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }

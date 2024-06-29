@@ -4,7 +4,8 @@ import Dropdown from './Dropdown';
 import Gameover from './Gameover';
 import Nav from './Nav';
 import Timer from './Timer';
-import './index.css'
+import Footer from './Footer';
+import './index.css';
 import { Link, useLocation } from 'react-router-dom';
 
 function Gamepage() {
@@ -81,9 +82,9 @@ function Gamepage() {
         {targetsFound.every((target) => target.found) && (
             <Gameover imageName={imageName} time={time} setTime={setTime} timerOn={timerOn} />
         )}
-        <div className='gamepage-header'>
+        <div className='header'>
           <Nav />
-          <div className='gamepage-header-info'>
+          {/* <div className='gamepage-header-info'> */}
             <Timer time={time} setTime={setTime} timerOn={timerOn} />
             <div className='header-targets'>
               {targetsList.map((target, index) => 
@@ -92,7 +93,7 @@ function Gamepage() {
                   </div>
               )}
             </div>
-          </div>
+          {/* </div> */}
         </div>
 
     {openMenu === true && (
@@ -118,6 +119,7 @@ function Gamepage() {
     <div className='image-picked'>
       <img onClick={getCoords} src={imagePicked}></img>
     </div>
+    <Footer />
     </>
   )
 }

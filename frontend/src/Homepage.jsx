@@ -4,13 +4,16 @@ import ctsImg from './assets/cosmic-thrill-seekers/cosmic-thrill-seekers.png'
 import ctsPreview from './assets/cosmic-thrill-seekers/cosmic-thrill-seekers-preview.png'
 import ssbuImg from './assets/smash-bros-ultimate/smash-bros-ultimate.png'
 import ssbuPreview from './assets/smash-bros-ultimate/smash-bros-ultimate-preview.png'
+import Footer from "./Footer";
 
 
 export default function Homepage() {
 
     return (
         <>
-            <Nav />
+            <div className="header">
+                <Nav />    
+            </div>
             <div className="content">
                 <div className="navigation">
                     <Link to='/'>Choose an Image</Link>
@@ -27,6 +30,7 @@ export default function Homepage() {
                     </Link>
                 </div>
             </div>
+            <Footer />
         </>
     )
 }
