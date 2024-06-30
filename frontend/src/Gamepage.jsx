@@ -11,6 +11,8 @@ import { Link, useLocation } from 'react-router-dom';
 function Gamepage() {
   const [xPos, setXPos] = useState(0);
   const [yPos, setYPos] = useState(0);
+  const [clickLocationX, setClickLocationX] = useState(0);
+  const [clickLocationY, setClickLocationY] = useState(0);
   const [openMenu, setOpenMenu] = useState(false);
   const [guess, setGuess] = useState('')
   const location = useLocation();
@@ -55,9 +57,9 @@ function Gamepage() {
   function getCoords(e) {
     setXPos(e.nativeEvent.offsetX);
     setYPos(e.nativeEvent.offsetY);
-    console.log(targetsFound);
-    console.log("clientX: " + e.nativeEvent.offsetX , "clientY: " + e.nativeEvent.offsetY);
-    setOpenMenu(!openMenu);
+    setClickLocationX(e.pageX)
+    setClickLocationY(e.pageY)
+    setOpenMenu(true);
     return;
   }
 
@@ -66,15 +68,15 @@ function Gamepage() {
     height: '50px',
     width: '50px',
     display: 'flex',
-    top: yPos -25,
-    left: xPos -25
+    top: clickLocationY - 30,
+    left: clickLocationX -25
   }
 
   const dropdownBox = {
     position: "absolute",
     display: 'flex',
-    top: yPos -25,
-    left: xPos + 40
+    top: clickLocationY - 25,
+    left: clickLocationX + 40,
   }
   
   return (
@@ -84,7 +86,6 @@ function Gamepage() {
         )}
         <div className='header'>
           <Nav />
-          {/* <div className='gamepage-header-info'> */}
             <Timer time={time} setTime={setTime} timerOn={timerOn} />
             <div className='header-targets'>
               {targetsList.map((target, index) => 
@@ -93,7 +94,6 @@ function Gamepage() {
                   </div>
               )}
             </div>
-          {/* </div> */}
         </div>
 
     {openMenu === true && (

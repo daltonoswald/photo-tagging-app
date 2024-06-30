@@ -85,13 +85,27 @@ a:hover {
 
 .score {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 20px;
-    border: 3px solid black;
+    border-bottom: 3px solid black;
     padding: 8px;
     margin: 8px;
     width: 100%;
+    align-items: center;
+}
+
+.score:last-child {
+    border-bottom: none;
+}
+
+.score:first-child > .score-rank {
+    background-color: #ffe02e;
+}
+
+.score:nth-child(2)> .score-rank {
+    background-color: #B4B4B4;
+}
+
+.score:nth-child(3)> .score-rank {
+    background-color: #AD8A56;
 }
 
 .score-container {
@@ -110,6 +124,17 @@ a:hover {
     font-size: 32px;
     font-weight: 700;
     margin: 0 20px;
+    width: 30%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.score-username,
+.score-time,
+.score-timestamp {
+    margin: 0;
 }
 
 .leaderboard-container,
@@ -283,4 +308,9 @@ a:hover {
 
 .icon {
     height: 50px;
+}
+
+.footer-links > a > .icon:hover {
+    transition: 0.9s;
+    transform: rotateZ(360deg);
 }
