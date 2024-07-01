@@ -3,7 +3,7 @@
 body {
     font-family: "Barlow";
     margin: 0;
-    background-color: #779cbb;
+    background-color: #f9fcff
 }
 
 #root {
@@ -15,15 +15,12 @@ body {
 
 a {
     color: black;
-    text-decoration: underline;
+    text-decoration: none;
+    font-weight: 700;
 }
 
 a:hover {
     transform: translateY(-2px);
-}
-
-.nav {
-    background-color: #6c698D;
 }
 
 .nav-title {
@@ -41,6 +38,10 @@ a:hover {
     font-size: 28px;
     gap: 10vw;
     margin: 2vh;
+}
+
+.navigation > a {
+    border-bottom: 2px solid black;
 }
 
 .content {
@@ -69,14 +70,14 @@ a:hover {
 }
 
 .selector > select {
-    background-color:#D4D2D5;
+    background-color: #cee3f8;
     height: 32px;
     width: 20vw;
     text-align: center;
     font-size: 16px;
     font-family: "Barlow";
     border-radius: 8px;
-    border: 2px solid black;
+    border: 2px solid #3594f3;;
 }
 
 .leaderboard-preview {
@@ -87,7 +88,7 @@ a:hover {
     display: flex;
     border-bottom: 3px solid black;
     padding: 8px;
-    margin: 8px;
+    /* margin: 8px; */
     width: 100%;
     align-items: center;
 }
@@ -155,10 +156,10 @@ a:hover {
     flex-direction: column;
     align-items: center;
     /* justify-content: space-around; */
-    border: 4px solid #6C698D;
+    border: 2px solid #3594f3;
     border-radius: 2rem .1rem;
     padding: 2vh 4vw;
-    background-color: #D4D2D5;
+    background-color: #cee3f8;
     box-shadow: #000 0 2px 8px;
     min-width: 300px;
     height: 250px;
@@ -185,8 +186,8 @@ a:hover {
     width: 90%;
     height: 100px;
     padding: 0 5%;
-    background-color: #6c698D;
-    border-bottom: 3px solid black;
+    background-color: #cee3f8;
+    border-bottom: 2px solid #3594f3;
     box-shadow: 0 5px 4px 0 rgba(0,0,0,0.1);
 }
 
@@ -273,12 +274,12 @@ a:hover {
 }
 
 .gameover-form {
-    background-color: #D4D2D5;
+    background-color: #e8eff7;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 3px solid #779cbb;
+    border: 2px solid #3594f3;
     padding: 5vh 10vw;
     border-radius: 4em 0.1em;
 }
@@ -290,8 +291,8 @@ a:hover {
     width: 96%;
     padding: 0% 2%;
 
-    background-color: #6c698D;
-    border-top: 3px solid black;
+    background-color: #cee3f8;
+    border-top: 2px solid #3594f3;
     box-shadow: 0 5px 4px 0 rgba(0,0,0,0.1);
 }
 
