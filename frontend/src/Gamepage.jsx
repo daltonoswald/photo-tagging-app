@@ -51,7 +51,6 @@ function Gamepage() {
     setTargetsToFind(images);
     setTargetsList(images);
     startStopTimer();
-    console.log(images);
 }, [imageName])
 
   function getCoords(e) {
@@ -65,18 +64,18 @@ function Gamepage() {
 
   const boxStyle = {
     position: "absolute",
-    height: '50px',
-    width: '50px',
+    height: '70px',
+    width: '70px',
     display: 'flex',
-    top: clickLocationY - 30,
-    left: clickLocationX -25
+    top: clickLocationY - 35,
+    left: clickLocationX - 35
   }
 
   const dropdownBox = {
     position: "absolute",
     display: 'flex',
-    top: clickLocationY - 25,
-    left: clickLocationX + 40,
+    top: clickLocationY - 35,
+    left: clickLocationX + 45,
   }
   
   return (

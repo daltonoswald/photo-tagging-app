@@ -3,24 +3,10 @@ import './index.css'
 
 
 export default function Dropdown({ openMenu, setOpenMenu, xPos, yPos, guess, setGuess, imageName, targetsToFind, setTargetsToFind, targetsFound, setTargetsFound }) {
-    // const [targetsToFind, setTargetsToFind] = useState([]);
-
-    // useEffect(() => {
-    //     const images = [];
-    //     for (let i = 1; i < 4; i++) {
-    //         images.push({
-    //             src: `/src/assets/target_${i}.png`,
-    //             id: `${i}`,
-    //         })
-    //     }
-    //     setTargetsToFind(images);
-    //     console.log(images);
-    // }, [imageName])
 
     async function handleGuess(e) {
         e.preventDefault();
         setOpenMenu(false);
-        console.log(imageName);
         const url = `http://localhost:3000/game`;
         const targetChose = `target_${e.target.id}`
         const formData = {
@@ -40,9 +26,7 @@ export default function Dropdown({ openMenu, setOpenMenu, xPos, yPos, guess, set
             })
             const data = await response.json();
             if (response.ok) {
-                console.log(data);
                 if (data.result === true) {
-                    console.log(data.result);
                     setTargetsFound((prev) => {
                        const updatedTargets = [...prev];
                        updatedTargets[data.targetNumberIndex] = {
