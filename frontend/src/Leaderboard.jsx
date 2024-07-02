@@ -28,8 +28,8 @@ export default function Leaderboard() {
 
     function changeLeaderboard(event) {
         setLeaderboardImage(event.target.value);
-        setLeaderboardImagePicked(`/src/assets/${event.target.value}/${event.target.value}-preview.png`)
-        setLeaderboardImageLink(`/src/assets/${event.target.value}/${event.target.value}.png`)
+        setLeaderboardImagePicked(`./assets/${event.target.value}/${event.target.value}-preview.png`)
+        setLeaderboardImageLink(`./assets/${event.target.value}/${event.target.value}.png`)
     }
 
     return (
