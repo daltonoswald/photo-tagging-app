@@ -28,6 +28,7 @@ app.use(cors({
     `https://daltonoswald-photo-tagging-app.netlify.app`,
     `https://daltonoswald-photo-tagging-app.netlify.app/gamepage`,
     `https://daltonoswald-photo-tagging-app.netlify.app/leaderboard`],
+  methods: ['GET', 'PUT', 'POST', 'DELETE'],
   optionsSuccessStatus: 204,
 }))
 
