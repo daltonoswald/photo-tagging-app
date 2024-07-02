@@ -8,7 +8,7 @@ export default function Dropdown({ openMenu, setOpenMenu, xPos, yPos, guess, set
         e.preventDefault();
         setOpenMenu(false);
         const localUrl = `http://localhost:3000/game`;
-        const url = 'daltonoswald-photo-tagging-app-production.up.railway.app/game'
+        const url = 'https://daltonoswald-photo-tagging-app-production.up.railway.app/game'
         const targetChose = `target_${e.target.id}`
         const formData = {
             imageName,
