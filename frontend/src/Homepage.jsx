@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import Nav from "./Nav";
 // import ctsImg from './assets/cosmic-thrill-seekers/cosmic-thrill-seekers.png'
-import ctsImg from './dist/assets/cosmic-thrill-seekers/cosmic-thrill-seekers.png'
-import ctsPreview from './assets/cosmic-thrill-seekers/cosmic-thrill-seekers-preview.png'
+import ctsImg from '../dist/assets/cosmic-thrill-seekers/cosmic-thrill-seekers.png'
+// import ctsPreview from './assets/cosmic-thrill-seekers/cosmic-thrill-seekers-preview.png'
+import ctsPreview from '../dist/assets/cosmic-thrill-seekers/cosmic-thrill-seekers-preview.png'
 // import ssbuImg from './assets/smash-bros-ultimate/smash-bros-ultimate.png'
-import ssbuImg from './dist/assets/smash-bros-ultimate/smash-bros-ultimate.png'
-import ssbuPreview from './assets/smash-bros-ultimate/smash-bros-ultimate-preview.png'
+import ssbuImg from '../dist/assets/smash-bros-ultimate/smash-bros-ultimate.png'
+// import ssbuPreview from './assets/smash-bros-ultimate/smash-bros-ultimate-preview.png'
+import ssbuPreview from '../dist/assets/smash-bros-ultimate/smash-bros-ultimate-preview.png'
 import Footer from "./Footer";
 
 

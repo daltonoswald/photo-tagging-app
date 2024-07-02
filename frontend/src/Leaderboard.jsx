@@ -7,8 +7,8 @@ import { useState, useEffect } from "react";
 
 export default function Leaderboard() {
     const [leaderboardImage, setLeaderboardImage] = useState('cosmic-thrill-seekers');
-    const [leaderboardImagePicked, setLeaderboardImagePicked] = useState('/src/assets/cosmic-thrill-seekers/cosmic-thrill-seekers-preview.png');
-    const [leaderboardImageLink, setLeaderboardImageLink] = useState('/src/assets/cosmic-thrill-seekers/cosmic-thrill-seekers.png')
+    const [leaderboardImagePicked, setLeaderboardImagePicked] = useState('../dist/assets/cosmic-thrill-seekers/cosmic-thrill-seekers-preview.png');
+    const [leaderboardImageLink, setLeaderboardImageLink] = useState('../dist/assets/cosmic-thrill-seekers/cosmic-thrill-seekers.png')
     const [leaderboardScores, setLeaderboardScores] = useState(null);
     const localUrl = `http://localhost:3000/leaderboard/${leaderboardImage}`;
     const url = `https://daltonoswald-photo-tagging-app-production.up.railway.app/leaderboard/${leaderboardImage}`
@@ -28,8 +28,8 @@ export default function Leaderboard() {
 
     function changeLeaderboard(event) {
         setLeaderboardImage(event.target.value);
-        setLeaderboardImagePicked(`./assets/${event.target.value}/${event.target.value}-preview.png`)
-        setLeaderboardImageLink(`./assets/${event.target.value}/${event.target.value}.png`)
+        setLeaderboardImagePicked(`../dist/assets/${event.target.value}/${event.target.value}-preview.png`)
+        setLeaderboardImageLink(`../dist/assets/${event.target.value}/${event.target.value}.png`)
     }
 
     return (
