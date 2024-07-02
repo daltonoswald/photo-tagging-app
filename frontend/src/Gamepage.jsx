@@ -46,7 +46,7 @@ function Gamepage() {
     const images = [];
     for (let i = 1; i < 4; i++) {
         images.push({
-            src: `../dist/assets/${imageName}/target_${i}.png`,
+            src: `./assets/${imageName}/target_${i}.png`,
             id: `${i}`,
         })
     }
