@@ -116,9 +116,10 @@ const data = [
 
 async function populateDatabase() {
     try {
-        await mongoose.connect(process.env.DEV_DB_URL);
+        await mongoose.connect(process.env.MONGODB_URI);
         await Image.insertMany(data);
-        console.log('Sucess');
+        console.log(data);
+        console.log('Success');
     } catch (error) {
         console.error('Error populating DB:', error);
     } finally {

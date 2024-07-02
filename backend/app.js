@@ -14,7 +14,7 @@ var app = express();
 
 const mongoose = require("mongoose");
 mongoose.set("strictQuery", false);
-const mongoDB = process.env.DEV_DB_URL;
+const mongoDB = process.env.MONGODB_URI || process.env.DEV_DB_URL;
 
 
 main().catch((err) => console.log(err));
@@ -24,7 +24,10 @@ async function main() {
 
 app.use(cors({
   origin: [
-    "http://localhost:5173"],
+    "http://localhost:5173", 
+    `https://daltonoswald-photo-tagging-app.netlify.app`,
+    `https://daltonoswald-photo-tagging-app.netlify.app/gamepage`,
+    `https://daltonoswald-photo-tagging-app.netlify.app/leaderboard`],
   optionsSuccessStatus: 204,
 }))
 
