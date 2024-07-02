@@ -21,15 +21,11 @@ exports.game_post = asyncHandler(async (req, res) => {
         const target = imagePlayed.targets[targetChose];
         
         const targetNumberIndex = targetChose.slice(-1) - 1;
-        console.log(targetChose);
-        console.log(targetNumberIndex);
 
         const minCoordinateX = target.coordinateX.minCoordinate;
         const maxCoordinateX = target.coordinateX.maxCoordinate;
         const minCoordinateY = target.coordinateY.minCoordinate;
         const maxCoordinateY = target.coordinateY.maxCoordinate;
-        console.log(xPos, yPos);
-        console.log(minCoordinateX, maxCoordinateX, minCoordinateY, maxCoordinateY)
         if ((xPos >= minCoordinateX && xPos <= maxCoordinateX) && (yPos >= minCoordinateY && yPos <= maxCoordinateY)) {
             res.status(200).json({ 
                 result: true, 
@@ -38,7 +34,6 @@ exports.game_post = asyncHandler(async (req, res) => {
              });
         } else {
             res.status(200).json({ result: false, imagePlayed });
-            console.log('Incorrect Guess');
         }
     }
 })
@@ -48,11 +43,10 @@ exports.score_get = asyncHandler(async (req, res) => {
         .sort({ time: 1 }, { timestamp: -1 })
         .collation({ locale: 'en_US', numericOrdering: true })
         .exec();
-        console.log(allScores);
 
     const formattedScores = allScores.map((score) => ({
         ...score.toObject(),
-        timestamp: format(new Date(score.timestamp), 'EEEE dd MMMM yyyy'),
+        timestamp: format(new Date(score.timestamp), 'dd MMMM yyyy'),
     }))
 
     if (!allScores) {
