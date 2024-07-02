@@ -18,8 +18,6 @@ function Gamepage() {
   const location = useLocation();
   const [imageName, setImageName] = useState(location.state?.imageName);
   const imagePicked = location.state?.imagePicked
-  console.log(imageName);
-  console.log(imagePicked);
   const [targetsToFind, setTargetsToFind] = useState([]);
   const [targetsList, setTargetsList] = useState([]);
 
