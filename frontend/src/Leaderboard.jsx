@@ -10,7 +10,8 @@ export default function Leaderboard() {
     const [leaderboardImagePicked, setLeaderboardImagePicked] = useState('/src/assets/cosmic-thrill-seekers/cosmic-thrill-seekers-preview.png');
     const [leaderboardImageLink, setLeaderboardImageLink] = useState('/src/assets/cosmic-thrill-seekers/cosmic-thrill-seekers.png')
     const [leaderboardScores, setLeaderboardScores] = useState(null);
-    const url = `http://localhost:3000/leaderboard/${leaderboardImage}`;
+    const localUrl = `http://localhost:3000/leaderboard/${leaderboardImage}`;
+    const url = `https://daltonoswald-photo-tagging-app.netlify.app/${leaderboardImage}`
 
     useEffect(() => {
         fetch(url, 

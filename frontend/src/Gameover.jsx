@@ -8,7 +8,8 @@ export default function Gameover({ imageName, time, setTime, timerOn }) {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const url = 'http://localhost:3000/score'
+        const localUrl = 'http://localhost:3000/score'
+        const url = 'https://daltonoswald-photo-tagging-app.netlify.app/score'
         const today = new Date();
 
         const formData = {

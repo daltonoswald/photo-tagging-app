@@ -7,7 +7,8 @@ export default function Dropdown({ openMenu, setOpenMenu, xPos, yPos, guess, set
     async function handleGuess(e) {
         e.preventDefault();
         setOpenMenu(false);
-        const url = `http://localhost:3000/game`;
+        const localUrl = `http://localhost:3000/game`;
+        const url = 'https://daltonoswald-photo-tagging-app.netlify.app/game'
         const targetChose = `target_${e.target.id}`
         const formData = {
             imageName,
