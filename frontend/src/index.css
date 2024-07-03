@@ -327,25 +327,13 @@ a:hover {
 }
 
 @media (max-width: 800px) {
+    body {
+        width: max-content
+    }
+
     .header {
         width: 100%;
         padding: 0;
-    }
-
-    .nav-title {
-        font-size: 16px;
-    }
-
-    .header-targets > .guessable,
-    .header-targets > .guessable > img {
-    height: 35px;
-    width: 35px;
-    border: none;
-    }
-
-    .timer {
-        font-size: 16px;
-        min-width: 20vw;
     }
 
     .navigation > a {
