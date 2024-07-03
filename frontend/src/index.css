@@ -300,7 +300,7 @@ a:hover {
     justify-content: space-between;
     width: 96%;
     padding: 0% 2%;
-
+    margin-top: auto;
     background-color: #cee3f8;
     border-top: 2px solid #3594f3;
     box-shadow: 0 5px 4px 0 rgba(0,0,0,0.1);
@@ -324,4 +324,39 @@ a:hover {
 .footer-links > a > .icon:hover {
     transition: 0.9s;
     transform: rotateZ(360deg);
+}
+
+@media (max-width: 800px) {
+    .header {
+        width: 100vw;
+        padding: 0;
+    }
+
+    .nav-title {
+        font-size: 16px;
+    }
+
+    .header-targets > .guessable,
+    .header-targets > .guessable > img {
+    height: 35px;
+    width: 35px;
+    border: none;
+    }
+
+    .timer {
+        font-size: 16px;
+        min-width: 20vw;
+    }
+
+    .navigation > a {
+        min-width: 150px;
+    }
+    .selector > select {
+        width: 80vw;
+    }
+
+    .leaderboard-container,
+    .games {
+        gap: 4vh
+    }
 }
