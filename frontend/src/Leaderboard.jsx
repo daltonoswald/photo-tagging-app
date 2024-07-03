@@ -68,7 +68,7 @@ export default function Leaderboard() {
 
 
                                     return (
-                                        <div className="score">
+                                        <div key={index + 1} className="score">
                                             <p className="score-rank">{index + 1}</p>
                                             <div className="score-info">
                                                 <p className="score-username">{score.username}</p>

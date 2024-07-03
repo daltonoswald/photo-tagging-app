@@ -88,8 +88,8 @@ function Gamepage() {
             <Timer time={time} setTime={setTime} timerOn={timerOn} />
             <div className='header-targets'>
               {targetsList.map((target, index) => 
-                  <div className='guessable'>
-                    <img id={target.id} src={target.src} />
+                  <div key={index} className='guessable'>
+                    <img key={target.id} id={target.id} src={target.src} />
                   </div>
               )}
             </div>
