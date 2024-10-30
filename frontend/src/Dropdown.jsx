@@ -60,7 +60,7 @@ export default function Dropdown({ openMenu, setOpenMenu, xPos, yPos, guess, set
                     <img onClick={handleGuess} id='3' src={greenHands}></img>
                 </div> */}
                 {targetsToFind.map((target, index) => 
-                    <div className='guessable'>
+                    <div className='guessable' key={target.id}>
                         <img onClick={handleGuess} id={target.id} src={target.src} />
                     </div>
                 )}

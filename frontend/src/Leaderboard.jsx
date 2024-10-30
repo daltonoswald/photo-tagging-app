@@ -11,7 +11,7 @@ export default function Leaderboard() {
     const [leaderboardImageLink, setLeaderboardImageLink] = useState('/assets/cosmic-thrill-seekers/cosmic-thrill-seekers.png')
     const [leaderboardScores, setLeaderboardScores] = useState(null);
     const localUrl = `http://localhost:3000/leaderboard/${leaderboardImage}`;
-    const url = `https://daltonoswald-photo-tagging-app-production.up.railway.app/loaderboard/${leaderboardImage}`
+    const url = `https://daltonoswald-photo-tagging-app-production.up.railway.app/leaderboard/${leaderboardImage}`
 
     // useEffect(() => {
     //     fetch(url, 
