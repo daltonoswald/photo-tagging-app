@@ -11,45 +11,43 @@ export default function Leaderboard() {
     const [leaderboardImageLink, setLeaderboardImageLink] = useState('/assets/cosmic-thrill-seekers/cosmic-thrill-seekers.png')
     const [leaderboardScores, setLeaderboardScores] = useState(null);
     const localUrl = `http://localhost:3000/leaderboard/${leaderboardImage}`;
-    const url = `https://daltonoswald-photo-tagging-app-production.up.railway.app/leaderboard/${leaderboardImage}`
+    const url = `https://daltonoswald-photo-tagging-app-production.up.railway.app/loaderboard/${leaderboardImage}`
 
-    useEffect(() => {
-        fetch(url, 
-            {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                mode: 'cors',
-            })
-            .then((res) => res.json())
-            .then((data) => setLeaderboardScores(data))
-    }, [leaderboardImage]);
-    
     // useEffect(() => {
-    //     const getLeaderboardData = async () => {
-    //         try {
-    //             const response = await fetch(url, {
-    //                 method: "GET",
-    //                 headers: {
-    //                     "Content-Type": "application/json",
-    //                 },
-    //                 mode: 'cors',
-    //             })
-    //             if (!response.ok) {
-    //                 console.error(response);
-    //             }
-    //             if (response.ok) {
-    //                 const data = response.json();
-    //                 console.log(response);
-    //                 console.log(data);
-    //             }
-    //         } catch (error) {
-    //             console.error(`Errors: ${error}`)
-    //         }
-    //     }
-    //     getLeaderboardData();
-    // }, [leaderboardImage])
+    //     fetch(url, 
+    //         {
+    //             method: "GET",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //             },
+    //             mode: 'cors',
+    //         })
+    //         .then((res) => res.json())
+    //         .then((data) => setLeaderboardScores(data))
+    // }, [leaderboardImage]);
+    
+    useEffect(() => {
+        const getLeaderboardData = async () => {
+            try {
+                const response = await fetch(url, {
+                    method: "GET",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    mode: 'cors',
+                })
+                if (!response.ok) {
+                    console.error(response);
+                } else if (response.ok) {
+                    const data = await response.json();
+                    setLeaderboardScores(data);
+                }
+            } catch (error) {
+                console.error(`Errors: ${error}`)
+            }
+        }
+        getLeaderboardData();
+    }, [leaderboardImage])
 
     function changeLeaderboard(event) {
         setLeaderboardImage(event.target.value);
@@ -83,7 +81,7 @@ export default function Leaderboard() {
                             <img className="game-card-preview" src={leaderboardImagePicked} />
                         </Link>
                             <div className="score-container">
-                                {leaderboardScores &&
+                                {leaderboardScores && 
                                 leaderboardScores.map((score, index) => {
 
                                     const hours = Math.floor(score.time / 360000);
