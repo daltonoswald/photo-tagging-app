@@ -25,6 +25,31 @@ export default function Leaderboard() {
             .then((res) => res.json())
             .then((data) => setLeaderboardScores(data))
     }, [leaderboardImage]);
+    
+    // useEffect(() => {
+    //     const getLeaderboardData = async () => {
+    //         try {
+    //             const response = await fetch(url, {
+    //                 method: "GET",
+    //                 headers: {
+    //                     "Content-Type": "application/json",
+    //                 },
+    //                 mode: 'cors',
+    //             })
+    //             if (!response.ok) {
+    //                 console.error(response);
+    //             }
+    //             if (response.ok) {
+    //                 const data = response.json();
+    //                 console.log(response);
+    //                 console.log(data);
+    //             }
+    //         } catch (error) {
+    //             console.error(`Errors: ${error}`)
+    //         }
+    //     }
+    //     getLeaderboardData();
+    // }, [leaderboardImage])
 
     function changeLeaderboard(event) {
         setLeaderboardImage(event.target.value);
