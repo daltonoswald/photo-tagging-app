@@ -10,21 +10,10 @@ export default function Leaderboard() {
     const [leaderboardImagePicked, setLeaderboardImagePicked] = useState('/assets/cosmic-thrill-seekers/cosmic-thrill-seekers-preview.png');
     const [leaderboardImageLink, setLeaderboardImageLink] = useState('/assets/cosmic-thrill-seekers/cosmic-thrill-seekers.png')
     const [leaderboardScores, setLeaderboardScores] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
     const localUrl = `http://localhost:3000/leaderboard/${leaderboardImage}`;
     const url = `https://daltonoswald-photo-tagging-app-production.up.railway.app/leaderboard/${leaderboardImage}`
 
-    // useEffect(() => {
-    //     fetch(url, 
-    //         {
-    //             method: "GET",
-    //             headers: {
-    //                 "Content-Type": "application/json",
-    //             },
-    //             mode: 'cors',
-    //         })
-    //         .then((res) => res.json())
-    //         .then((data) => setLeaderboardScores(data))
-    // }, [leaderboardImage]);
     
     useEffect(() => {
         const getLeaderboardData = async () => {
@@ -41,6 +30,7 @@ export default function Leaderboard() {
                 } else if (response.ok) {
                     const data = await response.json();
                     setLeaderboardScores(data);
+                    setIsLoading(false);
                 }
             } catch (error) {
                 console.error(`Errors: ${error}`)
@@ -80,6 +70,10 @@ export default function Leaderboard() {
                             <h4 className="game-card-title">Play</h4>
                             <img className="game-card-preview" src={leaderboardImagePicked} />
                         </Link>
+                        {isLoading && (
+                            <p className="score-container">Loading highscores...</p>
+                        )}
+                        {(!isLoading) && (
                             <div className="score-container">
                                 {leaderboardScores && 
                                 leaderboardScores.map((score, index) => {
@@ -102,6 +96,7 @@ export default function Leaderboard() {
                                     )
                                 })}
                             </div>
+                        )}
                     </div>
                 </div>
             </div>
