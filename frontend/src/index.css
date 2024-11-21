@@ -208,8 +208,9 @@ a:hover {
 }
 
 .timer {
-    width: 10vw;
+    width: 20vw;
     font-size: 32px;
+    text-align: center;
 }
 
 .header-targets {
@@ -269,7 +270,8 @@ a:hover {
     margin: auto;
 }
 
-.gameover-screen {
+.gameover-screen,
+.gamepage-error {
     background-color: rgba(0, 0, 0, 0.5);
     /* border: 3px solid black; */
     position: fixed;
@@ -292,6 +294,18 @@ a:hover {
     border: 2px solid #3594f3;
     padding: 5vh 10vw;
     border-radius: 4em 0.1em;
+}
+
+.gameover-form > input {
+    margin-top: 2vh;
+}
+
+.gamepage-error-message {
+    background-color: #ffc1ba;
+    padding: 2vw;
+    border-radius: 8px;
+    border: 2px solid red;
+    text-align: center;
 }
 
 .footer {

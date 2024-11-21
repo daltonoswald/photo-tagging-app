@@ -14,12 +14,12 @@ function Gamepage() {
   const [clickLocationX, setClickLocationX] = useState(0);
   const [clickLocationY, setClickLocationY] = useState(0);
   const [openMenu, setOpenMenu] = useState(false);
-  const [guess, setGuess] = useState('')
   const location = useLocation();
   const [imageName, setImageName] = useState(location.state?.imageName);
   const imagePicked = location.state?.imagePicked
   const [targetsToFind, setTargetsToFind] = useState([]);
   const [targetsList, setTargetsList] = useState([]);
+  const [error, setError] = useState(null);
 
   const [targetsFound, setTargetsFound] = useState([
     { found: false, coordinateX: null, coordinateY: null }, 
@@ -81,7 +81,7 @@ function Gamepage() {
   return (
     <>
         {targetsFound.every((target) => target.found) && (
-            <Gameover imageName={imageName} time={time} setTime={setTime} timerOn={timerOn} />
+            <Gameover imageName={imageName} time={time} setTime={setTime} timerOn={timerOn} setError={setError} />
         )}
         <div className='header'>
           <Nav />
@@ -104,13 +104,11 @@ function Gamepage() {
             xPos={xPos} 
             openMenu={openMenu} 
             setOpenMenu={setOpenMenu}
-            guess={guess} 
-            setGuess={setGuess} 
             imageName={imageName} 
             targetsToFind={targetsToFind}
             setTargetsToFind={setTargetsToFind}
-            targetsFound={targetsFound} 
-            setTargetsFound={setTargetsFound} />
+            setTargetsFound={setTargetsFound}
+            setError={setError} />
           </div>
       </>
     )}
@@ -118,6 +116,15 @@ function Gamepage() {
     <div className='image-picked'>
       <img onClick={getCoords} src={imagePicked}></img>
     </div>
+    {(error) && (
+      <div className='gamepage-error'>
+        <div className='gamepage-error-message'>
+          <p>{error.message}</p>
+          <p>Please try again later.</p>
+          <Link to="/">Home</Link>
+        </div>
+      </div>
+    )}
     <Footer />
     </>
   )

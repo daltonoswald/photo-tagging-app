@@ -3,8 +3,7 @@ import { useState, useEffect } from 'react'
 import './index.css'
 
 
-export default function Dropdown({ openMenu, setOpenMenu, xPos, yPos, guess, setGuess, imageName, targetsToFind, setTargetsToFind, targetsFound, setTargetsFound }) {
-
+export default function Dropdown({ openMenu, setOpenMenu, xPos, yPos, imageName, targetsToFind, setTargetsToFind, setTargetsFound, setError }) {
     async function handleGuess(e) {
         e.preventDefault();
         setOpenMenu(false);
@@ -44,6 +43,7 @@ export default function Dropdown({ openMenu, setOpenMenu, xPos, yPos, guess, set
             }
         } catch (error) {
             console.error("Error requesting:", error);
+            setError(error);
         }
 
     }
@@ -51,15 +51,6 @@ export default function Dropdown({ openMenu, setOpenMenu, xPos, yPos, guess, set
     return (
         <>
             <div className={`dropdown ${openMenu ? "open-dropdown" : "closed"}`}>
-                {/* <div className='guessable'>
-                    <img onClick={handleGuess} id='1' src={tiger}></img>
-                </div>
-                <div className='guessable'>
-                    <img onClick={handleGuess} id='2' src={rocketTattoo}></img>
-                </div>
-                <div className='guessable'>
-                    <img onClick={handleGuess} id='3' src={greenHands}></img>
-                </div> */}
                 {targetsToFind.map((target, index) => 
                     <div className='guessable' key={target.id}>
                         <img onClick={handleGuess} id={target.id} src={target.src} />
