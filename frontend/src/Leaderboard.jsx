@@ -11,6 +11,7 @@ export default function Leaderboard() {
     const [leaderboardImageLink, setLeaderboardImageLink] = useState('/assets/cosmic-thrill-seekers/cosmic-thrill-seekers.png')
     const [leaderboardScores, setLeaderboardScores] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
     const localUrl = `http://localhost:3000/leaderboard/${leaderboardImage}`;
     const url = `https://daltonoswald-photo-tagging-app-production.up.railway.app/leaderboard/${leaderboardImage}`
 
@@ -33,6 +34,8 @@ export default function Leaderboard() {
                     setIsLoading(false);
                 }
             } catch (error) {
+                setError(error);
+                setIsLoading(false);
                 console.error(`Errors: ${error}`)
             }
         }
@@ -70,10 +73,13 @@ export default function Leaderboard() {
                             <h4 className="game-card-title">Play</h4>
                             <img className="game-card-preview" src={leaderboardImagePicked} />
                         </Link>
-                        {isLoading && (
+                        {(isLoading && (error === null)) && (
                             <p className="score-container">Loading highscores...</p>
                         )}
-                        {(!isLoading) && (
+                        {(!isLoading && (error !== null)) && (
+                            <p className='score-container'>{error.message}</p>
+                        )}
+                        {(!isLoading && (error === null)) && (
                             <div className="score-container">
                                 {leaderboardScores && 
                                 leaderboardScores.map((score, index) => {
