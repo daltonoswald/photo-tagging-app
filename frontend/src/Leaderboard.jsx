@@ -18,6 +18,7 @@ export default function Leaderboard() {
     
     useEffect(() => {
         const getLeaderboardData = async () => {
+            setIsLoading(true);
             try {
                 const response = await fetch(url, {
                     method: "GET",

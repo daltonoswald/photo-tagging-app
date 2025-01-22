@@ -17,6 +17,7 @@ export default function Dropdown({ openMenu, setOpenMenu, xPos, yPos, imageName,
             yPos
         };
         try {
+            console.log('clicked')
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
