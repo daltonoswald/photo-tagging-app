@@ -1,9 +1,9 @@
 /* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react'
-import './index.css'
+// import './index.css'
 
 
-export default function Dropdown({ openMenu, setOpenMenu, xPos, yPos, imageName, targetsToFind, setTargetsToFind, setTargetsFound, setError }) {
+export default function Dropdown({ openMenu, setOpenMenu, xPos, yPos, imageName, targetsToFind, setTargetsToFind, setTargetsFound, setError, setTimerOn, setGameOver }) {
     async function handleGuess(e) {
         e.preventDefault();
         setOpenMenu(false);
@@ -17,7 +17,6 @@ export default function Dropdown({ openMenu, setOpenMenu, xPos, yPos, imageName,
             yPos
         };
         try {
-            console.log('clicked')
             const response = await fetch(url, {
                 method: "POST",
                 headers: {
@@ -40,13 +39,23 @@ export default function Dropdown({ openMenu, setOpenMenu, xPos, yPos, imageName,
                     });
                     const updatedTargetsToFind = targetsToFind.filter(target => target.id.toString() !== (data.targetNumberIndex + 1).toString());
                     setTargetsToFind(updatedTargetsToFind);
+                    checkGameState(updatedTargetsToFind);
                 }
             }
         } catch (error) {
             console.error("Error requesting:", error);
             setError(error);
         }
+    }
 
+    const checkGameState = (targetsFound) => {
+        if (targetsFound.every((target) => target.found)) {
+            console.log('All found!')
+            setTimerOn(false)
+            setGameOver(true)
+        } else {
+            console.log('Found: ', targetsFound.length)
+        }
     }
 
     return (

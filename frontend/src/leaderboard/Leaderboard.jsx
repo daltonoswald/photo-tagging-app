@@ -1,8 +1,8 @@
-import { Link } from "react-router-dom";
-import ctsImg from './assets/cosmic-thrill-seekers/cosmic-thrill-seekers.png'
-import Nav from "./Nav";
-import Footer from "./Footer";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
+import Nav from "../nav/Nav";
+import Footer from "../footer/Footer";
+import './leaderboard.styles.css'
 
 
 export default function Leaderboard() {

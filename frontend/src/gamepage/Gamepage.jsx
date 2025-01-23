@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react'
 // import ctsImg from './assets/cosmic-thrill-seekers.png'
 import Dropdown from './Dropdown';
 import Gameover from './Gameover';
-import Nav from './Nav';
+import Nav from '../nav/Nav';
 import Timer from './Timer';
-import Footer from './Footer';
-import './index.css';
+import Footer from '../footer/Footer';
+import './gamepage.styles.css';
 import { Link, useLocation } from 'react-router-dom';
 
 function Gamepage() {
@@ -19,6 +19,7 @@ function Gamepage() {
   const imagePicked = location.state?.imagePicked
   const [targetsToFind, setTargetsToFind] = useState([]);
   const [targetsList, setTargetsList] = useState([]);
+  const [gameOver, setGameOver] = useState(false);
   const [error, setError] = useState(null);
 
   const [targetsFound, setTargetsFound] = useState([
@@ -34,11 +35,11 @@ function Gamepage() {
     setTimerOn(!timerOn);
   }
 
-  useEffect(() => {
-    if (targetsFound.every((target) => target.found)) {
-      setTimerOn(false);
-    }
-  }, [targetsFound]);
+  // useEffect(() => {
+  //   if (targetsFound.every((target) => target.found)) {
+  //     setTimerOn(false);
+  //   }
+  // }, [targetsFound]);
 
   useEffect(() => {
     const images = [];
@@ -80,7 +81,10 @@ function Gamepage() {
   
   return (
     <>
-        {targetsFound.every((target) => target.found) && (
+        {/* {targetsFound.every((target) => target.found) && (
+            <Gameover imageName={imageName} time={time} setTime={setTime} timerOn={timerOn} setError={setError} />
+        )} */}
+        {gameOver && (
             <Gameover imageName={imageName} time={time} setTime={setTime} timerOn={timerOn} setError={setError} />
         )}
         <div className='header'>
@@ -108,7 +112,9 @@ function Gamepage() {
             targetsToFind={targetsToFind}
             setTargetsToFind={setTargetsToFind}
             setTargetsFound={setTargetsFound}
-            setError={setError} />
+            setError={setError}
+            setTimerOn={setTimerOn}
+            setGameOver={setGameOver} />
           </div>
       </>
     )}

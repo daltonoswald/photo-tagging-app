@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Timer from './Timer';
-import './index.css'
+// import './index.css'
 
 export default function Gameover({ imageName, time, setTime, timerOn, setError }) {
     const navigate = useNavigate();

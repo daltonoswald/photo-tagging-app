@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
-import Nav from "./Nav";
-import ctsImg from '/assets/cosmic-thrill-seekers/cosmic-thrill-seekers.png'
-import ctsPreview from '/assets/cosmic-thrill-seekers/cosmic-thrill-seekers-preview.png'
-import ssbuImg from '/assets/smash-bros-ultimate/smash-bros-ultimate.png'
-import ssbuPreview from '/assets/smash-bros-ultimate/smash-bros-ultimate-preview.png'
-import Footer from "./Footer";
+import Nav from "../nav/Nav";
+import ctsImg from '../assets/cosmic-thrill-seekers/cosmic-thrill-seekers.png'
+import ctsPreview from '../assets/cosmic-thrill-seekers/cosmic-thrill-seekers-preview.png'
+import ssbuImg from '../assets/smash-bros-ultimate/smash-bros-ultimate.png'
+import ssbuPreview from '../assets/smash-bros-ultimate/smash-bros-ultimate-preview.png'
+import Footer from "../footer/Footer";
 
 
 export default function Homepage() {

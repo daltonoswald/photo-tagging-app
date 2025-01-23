@@ -1,0 +1,28 @@
+.nav-title {
+    margin: 0;
+    padding: 2vh 1vw;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.navigation > a {
+    border-bottom: 2px solid black;
+    min-width: 300px;
+    text-align: center;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 90%;
+    height: 100px;
+    padding: 0 5%;
+    background-color: #cee3f8;
+    border-bottom: 2px solid #3594f3;
+    box-shadow: 0 5px 4px 0 rgba(0,0,0,0.1);
+}

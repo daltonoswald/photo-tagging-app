@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom"
-import odinIcon from './assets/icons/the-odin-project.svg'
-import githubIcon from './assets/icons/github-original.svg'
-import linkedinIcon from './assets/icons/linkedin-plain.svg'
+import odinIcon from '../assets/icons/the-odin-project.svg'
+import githubIcon from '../assets/icons/github-original.svg'
+import linkedinIcon from '../assets/icons/linkedin-plain.svg'
+import './footer.styles.css'
 
 export default function Footer() {
 

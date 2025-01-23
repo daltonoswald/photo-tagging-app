@@ -1,0 +1,31 @@
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 96%;
+    padding: 0% 2%;
+    margin-top: auto;
+    background-color: #cee3f8;
+    border-top: 2px solid #3594f3;
+    box-shadow: 0 5px 4px 0 rgba(0,0,0,0.1);
+}
+
+.footer-odin {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.footer-links {
+    display: flex;
+    gap: 8px;
+}
+
+.icon {
+    height: 50px;
+}
+
+.footer-links > a > .icon:hover {
+    transition: 0.9s;
+    transform: rotateZ(360deg);
+}

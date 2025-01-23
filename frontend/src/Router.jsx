@@ -1,7 +1,8 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import Homepage from './Homepage.jsx';
-import Gamepage from './Gamepage.jsx';
-import Leaderboard from './Leaderboard.jsx';
+import Homepage from './homepage/Homepage.jsx'
+import Gamepage from './gamepage/Gamepage.jsx';
+import Leaderboard from './leaderboard/Leaderboard.jsx';
+import Error from './error/Error.jsx';
 
 export default function Router() {
 
@@ -9,6 +10,7 @@ export default function Router() {
         {
             path: '/',
             element: <Homepage />,
+            errorElement: <Error />
         },
         {
             path: '/gamepage',
