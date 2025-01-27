@@ -15,7 +15,6 @@ export default function Leaderboard() {
     const [error, setError] = useState(null);
     // const url = `http://localhost:3000/leaderboard/${leaderboardImage}`;
     const url = `https://daltonoswald-photo-tagging-app-production.up.railway.app/leaderboard/${leaderboardImage}`
-
     
     useEffect(() => {
         const getLeaderboardData = async () => {

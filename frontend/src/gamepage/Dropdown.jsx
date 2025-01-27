@@ -1,13 +1,9 @@
 /* eslint-disable react/prop-types */
-import { useState, useEffect } from 'react'
-// import './index.css'
-
 
 export default function Dropdown({ openMenu, setOpenMenu, xPos, yPos, imageName, targetsToFind, setTargetsToFind, setTargetsFound, setError, setTimerOn, setGameOver }) {
     async function handleGuess(e) {
         e.preventDefault();
         setOpenMenu(false);
-        // const localUrl = `http://localhost:3000/game`;
         const url = 'https://daltonoswald-photo-tagging-app-production.up.railway.app/game'
         // const url = 'http://localhost:3000/game';
         const targetChose = `target_${e.target.id}`
