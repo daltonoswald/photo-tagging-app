@@ -79,7 +79,7 @@ export default function Leaderboard() {
                         {(isLoading && (error === null)) && (
                             <p className="score-container">Loading highscores...</p>
                         )}
-                        {(!isLoading && (error !== null)) && (
+                        {(!isLoading && (error !== null)) && (leaderboardScores !== null) && (
                             <p className='score-container'>{error.message}</p>
                         )}
                         {(!isLoading && (leaderboardScores === null || leaderboardScores.length === 0)) && (
