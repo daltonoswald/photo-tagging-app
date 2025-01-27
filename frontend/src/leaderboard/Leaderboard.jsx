@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Nav from "../nav/Nav";
 import Footer from "../footer/Footer";
+import { format } from 'date-fns';
 import './leaderboard.styles.css'
 
 
@@ -12,7 +13,7 @@ export default function Leaderboard() {
     const [leaderboardScores, setLeaderboardScores] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
-    const localUrl = `http://localhost:3000/leaderboard/${leaderboardImage}`;
+    // const url = `http://localhost:3000/leaderboard/${leaderboardImage}`;
     const url = `https://daltonoswald-photo-tagging-app-production.up.railway.app/leaderboard/${leaderboardImage}`
 
     
@@ -31,6 +32,7 @@ export default function Leaderboard() {
                     console.error(response);
                 } else if (response.ok) {
                     const data = await response.json();
+                    console.log(data);
                     setLeaderboardScores(data);
                     setIsLoading(false);
                 }
@@ -80,7 +82,12 @@ export default function Leaderboard() {
                         {(!isLoading && (error !== null)) && (
                             <p className='score-container'>{error.message}</p>
                         )}
-                        {(!isLoading && (error === null)) && (
+                        {(!isLoading && (leaderboardScores === null || leaderboardScores.length === 0)) && (
+                            <div className='score-container'>
+                                <p>No scores yet.</p>
+                            </div>
+                        )}
+                        {(!isLoading && (error === null) && (leaderboardScores.length > 0)) && (
                             <div className="score-container">
                                 {leaderboardScores && 
                                 leaderboardScores.map((score, index) => {
@@ -97,7 +104,7 @@ export default function Leaderboard() {
                                             <div className="score-info">
                                                 <p className="score-username">{score.username}</p>
                                                 <p className="score-time">{hours}h {minutes}m {seconds}s {milliseconds}ms</p>
-                                                <p className="score-timestamp">{score.timestamp}</p>
+                                                <p className="score-timestamp">{format(score.timestamp, 'dd MMMM yyyy')}</p>
                                             </div>
                                         </div>
                                     )

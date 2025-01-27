@@ -8,7 +8,7 @@ export default function Gameover({ imageName, time, setTime, timerOn, setError }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        const localUrl = 'http://localhost:3000/score'
+        // const url = 'http://localhost:3000/score'
         const url = 'https://daltonoswald-photo-tagging-app-production.up.railway.app/score'
         const today = new Date();
 
