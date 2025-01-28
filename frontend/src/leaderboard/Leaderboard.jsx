@@ -31,7 +31,6 @@ export default function Leaderboard() {
                     console.error(response);
                 } else if (response.ok) {
                     const data = await response.json();
-                    console.log(data);
                     setLeaderboardScores(data);
                     setIsLoading(false);
                 }

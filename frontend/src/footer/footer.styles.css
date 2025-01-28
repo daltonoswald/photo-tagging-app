@@ -25,7 +25,11 @@
     height: 50px;
 }
 
+.footer-links > a > .icon {
+    transition: 0.9s ease-in-out;
+}
+
 .footer-links > a > .icon:hover {
-    transition: 0.9s;
+    /* transition: 0.9s; */
     transform: rotateZ(360deg);
 }

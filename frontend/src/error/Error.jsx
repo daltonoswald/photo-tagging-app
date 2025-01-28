@@ -5,11 +5,7 @@ import './error.styles.css';
 
 export default function Error() {
     const error = useRouteError();
-    console.log((error.data).toString());
-    console.dir(error);
-    console.log('8', error.statusText)
-    console.log(typeof error.error)
-
+    
     return (
         <>
             <div className='header'>
