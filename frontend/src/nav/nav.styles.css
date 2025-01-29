@@ -26,3 +26,20 @@
     border-bottom: 2px solid #3594f3;
     box-shadow: 0 5px 4px 0 rgba(0,0,0,0.1);
 }
+
+@media (max-width: 800px) {
+    .nav {
+        font-size: 8px;
+        width: 20%;
+    }
+
+    .timer > p {
+        font-size: 16px;
+    }
+
+    .guessable,
+    .guessable > img {
+        height: 50px !important;
+        width: 50px !important;
+    }
+}

@@ -63,8 +63,7 @@
     border: none;
 }
 
-.image-picked,
-.content {
+.image-picked {
     margin: 15vh auto;
     margin-bottom: 10vh;
     display: flex;
@@ -75,6 +74,7 @@
     margin: auto 2vw;
 }
 
+.gameover-error,
 .gameover-screen,
 .gamepage-error {
     background-color: rgba(0, 0, 0, 0.5);
@@ -105,10 +105,24 @@
     margin-top: 2vh;
 }
 
+.gameover-error-message,
 .gamepage-error-message {
     background-color: #ffc1ba;
     padding: 2vw;
     border-radius: 8px;
     border: 2px solid red;
     text-align: center;
+}
+
+@media (max-width: 800px) {
+    .image-picked {
+        margin: 0;
+        margin-top: 15vh;
+        flex-grow: 1;
+        overflow: scroll;
+    }
+    .image-picked > img {
+        height: 100%;
+    width: fit-content;
+    }
 }

@@ -33,3 +33,14 @@
     /* transition: 0.9s; */
     transform: rotateZ(360deg);
 }
+
+@media (max-width: 800px) {
+    .footer-text {
+        font-size: 12px;
+    }
+
+    .icon {
+        height: 40px;
+        width: 40px;
+    }
+}

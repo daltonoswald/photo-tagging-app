@@ -85,7 +85,7 @@ function Gamepage() {
             <Gameover imageName={imageName} time={time} setTime={setTime} timerOn={timerOn} setError={setError} />
         )} */}
         {gameOver && (
-            <Gameover imageName={imageName} time={time} setTime={setTime} timerOn={timerOn} setError={setError} />
+            <Gameover imageName={imageName} time={time} setTime={setTime} timerOn={timerOn} />
         )}
         <div className='header'>
           <Nav />

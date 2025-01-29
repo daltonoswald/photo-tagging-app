@@ -29,6 +29,7 @@ export default function Leaderboard() {
                 })
                 if (!response.ok) {
                     console.error(response);
+                    setError(response)
                 } else if (response.ok) {
                     const data = await response.json();
                     setLeaderboardScores(data);
@@ -60,9 +61,6 @@ export default function Leaderboard() {
                     <Link to="/leaderboard">Leaderboards</Link>
                 </div>
                 <div className="leaderboards">
-                    {/* <div className="leaderboard-image">
-                        <img src={leaderboardImagePicked} className="leaderboard-preview"></img>
-                    </div> */}
                     <div className="selector">
                         <select onChange={changeLeaderboard}>
                             <option value='cosmic-thrill-seekers'>Cosmic Thrill Seekers</option>
@@ -77,10 +75,12 @@ export default function Leaderboard() {
                         {(isLoading && (error === null)) && (
                             <p className="score-container">Loading highscores...</p>
                         )}
-                        {(!isLoading && (error !== null)) && (leaderboardScores !== null) && (
-                            <p className='score-container'>{error.message}</p>
+                        {(!isLoading && (error)) && (
+                            <div className='score-container'>
+                                <p>{error.message}</p>
+                                </div>
                         )}
-                        {(!isLoading && (leaderboardScores === null || leaderboardScores.length === 0)) && (
+                        {(!isLoading && !error && leaderboardScores.length === 0) && (
                             <div className='score-container'>
                                 <p>No scores yet.</p>
                             </div>

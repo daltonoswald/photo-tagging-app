@@ -47,18 +47,15 @@ export default function Dropdown({ openMenu, setOpenMenu, xPos, yPos, imageName,
 
     const checkGameState = (targetsFound) => {
         if (targetsFound.every((target) => target.found)) {
-            console.log('All found!')
             setTimerOn(false)
             setGameOver(true)
-        } else {
-            console.log('Found: ', targetsFound.length)
         }
     }
 
     return (
         <>
             <div className={`dropdown ${openMenu ? "open-dropdown" : "closed"}`}>
-                {targetsToFind.map((target, index) => 
+                {targetsToFind.map((target) => 
                     <div className='guessable' key={target.id}>
                         <img onClick={handleGuess} id={target.id} src={target.src} />
                     </div>
