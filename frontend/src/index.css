@@ -82,6 +82,7 @@ a:hover {
 .game-card-preview {
     margin-top: 8px;
     width: 200px;
+    border-radius: 4px;
 }
 
 @media (max-width: 800px) {
