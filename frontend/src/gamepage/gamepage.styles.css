@@ -118,11 +118,13 @@
     .image-picked {
         margin: 0;
         margin-top: 15vh;
+        margin-bottom: 10vh;
         flex-grow: 1;
         overflow: scroll;
     }
+
     .image-picked > img {
         height: 100%;
-    width: fit-content;
+        width: fit-content;
     }
 }
